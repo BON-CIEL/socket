@@ -32,13 +32,12 @@
             this.textBoxIP_RE = new System.Windows.Forms.TextBox();
             this.textBoxIPeR = new System.Windows.Forms.TextBox();
             this.textBoxPort_RE = new System.Windows.Forms.TextBox();
-            this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.buttonFemer = new System.Windows.Forms.Button();
+            this.textBoxPort_DES = new System.Windows.Forms.TextBox();
+            this.textBoxIPed = new System.Windows.Forms.TextBox();
+            this.textBoxport_dest = new System.Windows.Forms.TextBox();
+            this.textBoxDest = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // textBoxRecp
@@ -75,15 +74,6 @@
             this.textBoxPort_RE.Text = "3031";
             this.textBoxPort_RE.TextChanged += new System.EventHandler(this.textBox5_TextChanged);
             // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(0, 0);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 4;
-            this.button2.Text = "button2";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
             // button3
             // 
             this.button3.Location = new System.Drawing.Point(536, 37);
@@ -94,59 +84,58 @@
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
-            // button4
+            // buttonFemer
             // 
-            this.button4.Location = new System.Drawing.Point(536, 73);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(202, 23);
-            this.button4.TabIndex = 10;
-            this.button4.Text = "créer Socket et Bind(IPerR)";
-            this.button4.UseVisualStyleBackColor = true;
+            this.buttonFemer.Location = new System.Drawing.Point(536, 73);
+            this.buttonFemer.Name = "buttonFemer";
+            this.buttonFemer.Size = new System.Drawing.Size(202, 23);
+            this.buttonFemer.TabIndex = 10;
+            this.buttonFemer.Text = "Femer Close()";
+            this.buttonFemer.UseVisualStyleBackColor = true;
             // 
-            // textBox2
+            // textBoxPort_DES
             // 
-            this.textBox2.Location = new System.Drawing.Point(276, 77);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 20);
-            this.textBox2.TabIndex = 9;
-            this.textBox2.Text = "3031";
+            this.textBoxPort_DES.Location = new System.Drawing.Point(276, 77);
+            this.textBoxPort_DES.Name = "textBoxPort_DES";
+            this.textBoxPort_DES.Size = new System.Drawing.Size(100, 20);
+            this.textBoxPort_DES.TabIndex = 9;
+            this.textBoxPort_DES.Text = "3032";
             // 
-            // textBox3
+            // textBoxIPed
             // 
-            this.textBox3.Location = new System.Drawing.Point(392, 77);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(100, 20);
-            this.textBox3.TabIndex = 8;
-            this.textBox3.Text = "IPeR";
+            this.textBoxIPed.Location = new System.Drawing.Point(392, 77);
+            this.textBoxIPed.Name = "textBoxIPed";
+            this.textBoxIPed.Size = new System.Drawing.Size(100, 20);
+            this.textBoxIPed.TabIndex = 8;
+            this.textBoxIPed.Text = "IPeD";
             // 
-            // textBox4
+            // textBoxport_dest
             // 
-            this.textBox4.Location = new System.Drawing.Point(150, 77);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(100, 20);
-            this.textBox4.TabIndex = 7;
-            this.textBox4.Text = "127.0.01";
+            this.textBoxport_dest.Location = new System.Drawing.Point(150, 77);
+            this.textBoxport_dest.Name = "textBoxport_dest";
+            this.textBoxport_dest.Size = new System.Drawing.Size(100, 20);
+            this.textBoxport_dest.TabIndex = 7;
+            this.textBoxport_dest.Text = "127.0.01";
             // 
-            // textBox5
+            // textBoxDest
             // 
-            this.textBox5.Location = new System.Drawing.Point(24, 77);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(100, 20);
-            this.textBox5.TabIndex = 6;
-            this.textBox5.Text = "Recp";
-            this.textBox5.TextChanged += new System.EventHandler(this.textBox5_TextChanged_1);
+            this.textBoxDest.Location = new System.Drawing.Point(24, 77);
+            this.textBoxDest.Name = "textBoxDest";
+            this.textBoxDest.Size = new System.Drawing.Size(100, 20);
+            this.textBoxDest.TabIndex = 6;
+            this.textBoxDest.Text = "Dest.";
+            this.textBoxDest.TextChanged += new System.EventHandler(this.textBox5_TextChanged_1);
             // 
             // Form1
             // 
             this.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
             this.ClientSize = new System.Drawing.Size(801, 469);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox4);
-            this.Controls.Add(this.textBox5);
+            this.Controls.Add(this.buttonFemer);
+            this.Controls.Add(this.textBoxPort_DES);
+            this.Controls.Add(this.textBoxIPed);
+            this.Controls.Add(this.textBoxport_dest);
+            this.Controls.Add(this.textBoxDest);
             this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
             this.Controls.Add(this.textBoxPort_RE);
             this.Controls.Add(this.textBoxIPeR);
             this.Controls.Add(this.textBoxIP_RE);
@@ -182,13 +171,12 @@
         private System.Windows.Forms.TextBox textBoxIP_RE;
         private System.Windows.Forms.TextBox textBoxIPeR;
         private System.Windows.Forms.TextBox textBoxPort_RE;
-        private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.Button buttonFemer;
+        private System.Windows.Forms.TextBox textBoxPort_DES;
+        private System.Windows.Forms.TextBox textBoxIPed;
+        private System.Windows.Forms.TextBox textBoxport_dest;
+        private System.Windows.Forms.TextBox textBoxDest;
     }
 }
 
