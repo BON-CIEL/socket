@@ -55,6 +55,7 @@
             this.textBoxRecp.Size = new System.Drawing.Size(100, 20);
             this.textBoxRecp.TabIndex = 0;
             this.textBoxRecp.Text = "Recp";
+            this.textBoxRecp.TextChanged += new System.EventHandler(this.textBoxRecp_TextChanged);
             // 
             // textBoxIP_RE
             // 
@@ -100,6 +101,7 @@
             this.buttonFemer.TabIndex = 10;
             this.buttonFemer.Text = "Femer Close()";
             this.buttonFemer.UseVisualStyleBackColor = true;
+            this.buttonFemer.Click += new System.EventHandler(this.buttonFemer_Click);
             // 
             // textBoxPort_DES
             // 
@@ -152,6 +154,7 @@
             this.textBoxenvoi.Size = new System.Drawing.Size(100, 20);
             this.textBoxenvoi.TabIndex = 11;
             this.textBoxenvoi.Text = "envoi";
+            this.textBoxenvoi.TextChanged += new System.EventHandler(this.textBoxenvoi_TextChanged);
             // 
             // button2
             // 
@@ -179,6 +182,7 @@
             this.textBox3.Size = new System.Drawing.Size(226, 152);
             this.textBox3.TabIndex = 16;
             this.textBox3.Text = "Bonjour UDP";
+            this.textBox3.TextChanged += new System.EventHandler(this.textBox3_TextChanged_1);
             // 
             // textBox_recp_messa
             // 
@@ -188,6 +192,7 @@
             this.textBox_recp_messa.Size = new System.Drawing.Size(100, 20);
             this.textBox_recp_messa.TabIndex = 15;
             this.textBox_recp_messa.Text = "Recp.";
+            this.textBox_recp_messa.TextChanged += new System.EventHandler(this.textBox_recp_messa_TextChanged);
             // 
             // button4_CLS
             // 
@@ -197,6 +202,7 @@
             this.button4_CLS.TabIndex = 17;
             this.button4_CLS.Text = "CLS";
             this.button4_CLS.UseVisualStyleBackColor = true;
+            this.button4_CLS.Click += new System.EventHandler(this.button4_CLS_Click);
             // 
             // Form1
             // 
@@ -221,6 +227,7 @@
             this.Controls.Add(this.textBoxRecp);
             this.ImeMode = System.Windows.Forms.ImeMode.On;
             this.Name = "Form1";
+            this.Text = "Communication par socket UDP";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
