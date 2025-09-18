@@ -38,12 +38,19 @@
             this.textBoxIPed = new System.Windows.Forms.TextBox();
             this.textBoxport_dest = new System.Windows.Forms.TextBox();
             this.textBoxDest = new System.Windows.Forms.TextBox();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.textBoxenvoi = new System.Windows.Forms.TextBox();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button4_Envoyer = new System.Windows.Forms.Button();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.textBox_recp_messa = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // textBoxRecp
             // 
             this.textBoxRecp.Location = new System.Drawing.Point(24, 41);
             this.textBoxRecp.Name = "textBoxRecp";
+            this.textBoxRecp.ReadOnly = true;
             this.textBoxRecp.Size = new System.Drawing.Size(100, 20);
             this.textBoxRecp.TabIndex = 0;
             this.textBoxRecp.Text = "Recp";
@@ -121,15 +128,76 @@
             // 
             this.textBoxDest.Location = new System.Drawing.Point(24, 77);
             this.textBoxDest.Name = "textBoxDest";
+            this.textBoxDest.ReadOnly = true;
             this.textBoxDest.Size = new System.Drawing.Size(100, 20);
             this.textBoxDest.TabIndex = 6;
             this.textBoxDest.Text = "Dest.";
             this.textBoxDest.TextChanged += new System.EventHandler(this.textBox5_TextChanged_1);
             // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(150, 129);
+            this.textBox2.Multiline = true;
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(200, 60);
+            this.textBox2.TabIndex = 12;
+            this.textBox2.Text = "Bonjour UDP";
+            // 
+            // textBoxenvoi
+            // 
+            this.textBoxenvoi.Location = new System.Drawing.Point(24, 129);
+            this.textBoxenvoi.Name = "textBoxenvoi";
+            this.textBoxenvoi.ReadOnly = true;
+            this.textBoxenvoi.Size = new System.Drawing.Size(100, 20);
+            this.textBoxenvoi.TabIndex = 11;
+            this.textBoxenvoi.Text = "envoi";
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(486, 194);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(142, 45);
+            this.button2.TabIndex = 14;
+            this.button2.Text = "recevoir Rzxzive From() Bloquant Timrout";
+            this.button2.UseVisualStyleBackColor = true;
+            // 
+            // button4_Envoyer
+            // 
+            this.button4_Envoyer.Location = new System.Drawing.Point(457, 152);
+            this.button4_Envoyer.Name = "button4_Envoyer";
+            this.button4_Envoyer.Size = new System.Drawing.Size(202, 23);
+            this.button4_Envoyer.TabIndex = 13;
+            this.button4_Envoyer.Text = "Envoyer sendTO(IPeD)";
+            this.button4_Envoyer.UseVisualStyleBackColor = true;
+            // 
+            // textBox3
+            // 
+            this.textBox3.Location = new System.Drawing.Point(150, 229);
+            this.textBox3.Multiline = true;
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(226, 152);
+            this.textBox3.TabIndex = 16;
+            this.textBox3.Text = "Bonjour UDP";
+            // 
+            // textBox_recp_messa
+            // 
+            this.textBox_recp_messa.Location = new System.Drawing.Point(24, 229);
+            this.textBox_recp_messa.Name = "textBox_recp_messa";
+            this.textBox_recp_messa.ReadOnly = true;
+            this.textBox_recp_messa.Size = new System.Drawing.Size(100, 20);
+            this.textBox_recp_messa.TabIndex = 15;
+            this.textBox_recp_messa.Text = "Recp.";
+            // 
             // Form1
             // 
             this.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
             this.ClientSize = new System.Drawing.Size(801, 469);
+            this.Controls.Add(this.textBox3);
+            this.Controls.Add(this.textBox_recp_messa);
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.button4_Envoyer);
+            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.textBoxenvoi);
             this.Controls.Add(this.buttonFemer);
             this.Controls.Add(this.textBoxPort_DES);
             this.Controls.Add(this.textBoxIPed);
@@ -177,6 +245,12 @@
         private System.Windows.Forms.TextBox textBoxIPed;
         private System.Windows.Forms.TextBox textBoxport_dest;
         private System.Windows.Forms.TextBox textBoxDest;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox textBoxenvoi;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button4_Envoyer;
+        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox textBox_recp_messa;
     }
 }
 
