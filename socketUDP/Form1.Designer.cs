@@ -44,6 +44,7 @@
             this.button4_Envoyer = new System.Windows.Forms.Button();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.textBox_recp_messa = new System.Windows.Forms.TextBox();
+            this.button4_CLS = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // textBoxRecp
@@ -188,10 +189,20 @@
             this.textBox_recp_messa.TabIndex = 15;
             this.textBox_recp_messa.Text = "Recp.";
             // 
+            // button4_CLS
+            // 
+            this.button4_CLS.Location = new System.Drawing.Point(426, 327);
+            this.button4_CLS.Name = "button4_CLS";
+            this.button4_CLS.Size = new System.Drawing.Size(90, 35);
+            this.button4_CLS.TabIndex = 17;
+            this.button4_CLS.Text = "CLS";
+            this.button4_CLS.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
             this.ClientSize = new System.Drawing.Size(801, 469);
+            this.Controls.Add(this.button4_CLS);
             this.Controls.Add(this.textBox3);
             this.Controls.Add(this.textBox_recp_messa);
             this.Controls.Add(this.button2);
@@ -251,6 +262,7 @@
         private System.Windows.Forms.Button button4_Envoyer;
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.TextBox textBox_recp_messa;
+        private System.Windows.Forms.Button button4_CLS;
     }
 }
 
