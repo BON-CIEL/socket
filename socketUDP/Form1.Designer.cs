@@ -69,7 +69,8 @@
             this.txtLocalIP.Location = new System.Drawing.Point(70, 19);
             this.txtLocalIP.Name = "txtLocalIP";
             this.txtLocalIP.Size = new System.Drawing.Size(160, 20);
-            this.txtLocalIP.TabIndex = 2;           
+            this.txtLocalIP.TabIndex = 2;
+            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -225,7 +226,7 @@
             // 
             // timerReceive
             // 
-
+            this.timerReceive.Interval = 100;
             // 
             // Form1
             // 
@@ -251,7 +252,6 @@
             this.groupBoxReception.ResumeLayout(false);
             this.groupBoxReception.PerformLayout();
             this.ResumeLayout(false);
-
         }
 
         #endregion
