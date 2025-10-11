@@ -36,66 +36,86 @@ namespace socketUDP
         // Commit #3 - Bouton Créer Socket UDP
         private void buttonCreer_Click(object sender, EventArgs e)
         {
+            
+            {
+                // Commit #4 - 
+                
 
-            // Création du socket UDP
-            SSockUDP = new Socket(AddressFamily.InterNetwork,
-                                  SocketType.Dgram,
-                                  ProtocolType.Udp);
+                // Création du socket UDP
+                SSockUDP = new Socket(AddressFamily.InterNetwork,
+                                      SocketType.Dgram,
+                                      ProtocolType.Udp);
 
-            // Création du point de terminaison local (réception)
-            IPAddress localIP = IPAddress.Parse(txtLocalIP.Text.Trim());
-            int localPort = int.Parse(txtLocalPort.Text.Trim());
-            IPedR = new IPEndPoint(localIP, localPort);
+                // Création du point de terminaison local (réception)
+                IPAddress localIP = IPAddress.Parse(txtLocalIP.Text.Trim());
+                int localPort = int.Parse(txtLocalPort.Text.Trim());
+                IPedR = new IPEndPoint(localIP, localPort);
 
-            // Lier le socket au point de terminaison local
-            SSockUDP.Bind(IPedR);
+                // Lier le socket au point de terminaison local
+                SSockUDP.Bind(IPedR);
 
+                textBoxRecp.AppendText($"Socket créé et lié sur {localIP}:{localPort}\r\n");
 
-
-            textBoxRecp.AppendText($"Socket créé et lié sur {localIP}:{localPort}\r\n"); 
+            }
+            
         }
-
 
         // Commit #3 - Bouton Envoyer
         private void buttonEnvoyer_Click(object sender, EventArgs e)
         {
+           
+            
+                // Commit #4 - 
+                
 
-            // Création du point de terminaison destination
-            IPAddress destIP = IPAddress.Parse(txtDestIP.Text.Trim());
-            int destPort = int.Parse(txtDestPort.Text.Trim());
-            IPedD = new IPEndPoint(destIP, destPort);
+                // Création du point de terminaison destination
+                IPAddress destIP = IPAddress.Parse(txtDestIP.Text.Trim());
+                int destPort = int.Parse(txtDestPort.Text.Trim());
+                IPedD = new IPEndPoint(destIP, destPort);
 
-            // Mise en forme du message à envoyer
-            string message = textBoxEnvoi.Text;
-            var msg = Encoding.ASCII.GetBytes(message);
+                // Mise en forme du message à envoyer
+                string message = textBoxEnvoi.Text;
+                var msg = Encoding.ASCII.GetBytes(message);
 
-            // Envoi du message
-            int bytesSent = SSockUDP.SendTo(msg, IPedD);
-            textBoxRecp.AppendText($"Envoyé {bytesSent} octets à {destIP}:{destPort}\r\n");
+                // Envoi du message
+                int bytesSent = SSockUDP.SendTo(msg, IPedD);
+                textBoxRecp.AppendText($"Envoyé {bytesSent} octets à {destIP}:{destPort}\r\n");
+            
+            
         }
-
 
         // Commit #3 - Bouton Recevoir
         private void buttonRecevoir_Click(object sender, EventArgs e)
         {
+           
+                // Commit #4 
+                
 
+                // Buffer de réception
+                var buffer = new byte[1024];
 
-            // Buffer de réception
-            var buffer = new byte[1024];
+                // Réception du message (bloquant avec timeout)
+                int bytesReceived = SSockUDP.ReceiveFrom(buffer, ref IPedFrom);
 
-            // Réception du message (bloquant avec timeout)
-            int bytesReceived = SSockUDP.ReceiveFrom(buffer, ref IPedFrom);
-
-            // Affichage du message
-            string messageRecu = Encoding.ASCII.GetString(buffer, 0, bytesReceived);
-            textBoxRecp.AppendText($"Reçu de {IPedFrom} : {messageRecu}\r\n");
+                // Affichage du message
+                string messageRecu = Encoding.ASCII.GetString(buffer, 0, bytesReceived);
+                textBoxRecp.AppendText($"Reçu de {IPedFrom} : {messageRecu}\r\n");
+          
+            
+               
+            
         }
 
         // Commit #3 - Bouton Fermer Socket
         private void buttonFermer_Click(object sender, EventArgs e)
         {
 
-
+            // Commit #4 
+            if (SSockUDP == null)
+            {
+                textBoxRecp.AppendText("Erreur : Socket déjà fermé ou non créé.\r\n");
+                return;
+            }
 
             // Arrêter le timer
             if (timerReceive != null)
@@ -106,22 +126,14 @@ namespace socketUDP
             // Fermeture du socket
             SSockUDP.Close();
             SSockUDP = null;
-
-            textBoxRecp.AppendText("Socket fermé.\r\n");
         }
-            
 
-       
+        
 
         // Bouton pour vider la zone de réception
         private void buttonClear_Click(object sender, EventArgs e)
         {
             textBoxRecp.Clear();
-        }
-
-        private void txtLocalIP_TextChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }

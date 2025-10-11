@@ -69,9 +69,7 @@
             this.txtLocalIP.Location = new System.Drawing.Point(70, 19);
             this.txtLocalIP.Name = "txtLocalIP";
             this.txtLocalIP.Size = new System.Drawing.Size(160, 20);
-            this.txtLocalIP.TabIndex = 2;
-            this.txtLocalIP.TextChanged += new System.EventHandler(this.txtLocalIP_TextChanged);
-            // 
+            this.txtLocalIP.TabIndex = 2;           
             // label2
             // 
             this.label2.AutoSize = true;
