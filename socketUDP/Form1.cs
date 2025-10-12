@@ -65,7 +65,11 @@ namespace socketUDP
 
                 textBoxRecp.AppendText($"Socket créé et lié sur {localIP}:{localPort}\r\n");
 
-              
+                // Commit #6 - Démarrer le timer pour scrutation
+                if (timerReceive != null)
+                {
+                    timerReceive.Start();
+                }
             }
             catch (System.Net.Sockets.SocketException se)
             {
@@ -187,7 +191,26 @@ namespace socketUDP
             }
         }
 
-       
+        // Commit #6 - Timer pour scrutation des données disponibles
+        private void timerReceive_Tick(object sender, EventArgs e)
+        {
+            try
+            {
+                if (SSockUDP != null && SSockUDP.Available > 0)
+                {
+                    // Des données sont disponibles
+                    var buffer = new byte[1024];
+                    int bytesReceived = SSockUDP.ReceiveFrom(buffer, ref IPedFrom);
+
+                    string messageRecu = Encoding.ASCII.GetString(buffer, 0, bytesReceived);
+                    textBoxRecp.AppendText($"[Auto] Reçu de {IPedFrom} : {messageRecu}\r\n");
+                }
+            }
+            catch (Exception ex)
+            {
+                textBoxRecp.AppendText("Erreur Timer : " + ex.Message + "\r\n");
+            }
+        }
 
         // Bouton pour vider la zone de réception
         private void buttonClear_Click(object sender, EventArgs e)

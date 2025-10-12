@@ -227,6 +227,7 @@
             // timerReceive
             // 
             this.timerReceive.Interval = 100;
+            this.timerReceive.Tick += new System.EventHandler(this.timerReceive_Tick);
             // 
             // Form1
             // 
