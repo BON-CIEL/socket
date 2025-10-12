@@ -36,10 +36,14 @@ namespace socketUDP
         // Commit #3 - Bouton Créer Socket UDP
         private void buttonCreer_Click(object sender, EventArgs e)
         {
-            
+            try
             {
-                // Commit #4 - 
-                
+                // Commit #4 - Vérifier si socket déjà créé
+                if (SSockUDP != null)
+                {
+                    textBoxRecp.AppendText("Erreur : Socket déjà créé.\r\n");
+                    return;
+                }
 
                 // Création du socket UDP
                 SSockUDP = new Socket(AddressFamily.InterNetwork,
@@ -54,19 +58,38 @@ namespace socketUDP
                 // Lier le socket au point de terminaison local
                 SSockUDP.Bind(IPedR);
 
+                // Commit #5 - Définir timeout de réception (10 secondes)
+                SSockUDP.SetSocketOption(SocketOptionLevel.Socket,
+                                        SocketOptionName.ReceiveTimeout,
+                                        10000);
+
                 textBoxRecp.AppendText($"Socket créé et lié sur {localIP}:{localPort}\r\n");
 
+              
             }
-            
+            catch (System.Net.Sockets.SocketException se)
+            {
+                textBoxRecp.AppendText("Erreur Socket : " + se.Message + "\r\n");
+                SSockUDP = null;
+            }
+            catch (Exception ex)
+            {
+                textBoxRecp.AppendText("Erreur : " + ex.Message + "\r\n");
+                SSockUDP = null;
+            }
         }
 
         // Commit #3 - Bouton Envoyer
         private void buttonEnvoyer_Click(object sender, EventArgs e)
         {
-           
-            
-                // Commit #4 - 
-                
+            try
+            {
+                // Commit #4 - Vérifier si socket existe
+                if (SSockUDP == null)
+                {
+                    textBoxRecp.AppendText("Erreur : Socket non créé. Créez d'abord le socket.\r\n");
+                    return;
+                }
 
                 // Création du point de terminaison destination
                 IPAddress destIP = IPAddress.Parse(txtDestIP.Text.Trim());
@@ -80,16 +103,28 @@ namespace socketUDP
                 // Envoi du message
                 int bytesSent = SSockUDP.SendTo(msg, IPedD);
                 textBoxRecp.AppendText($"Envoyé {bytesSent} octets à {destIP}:{destPort}\r\n");
-            
-            
+            }
+            catch (System.Net.Sockets.SocketException se)
+            {
+                textBoxRecp.AppendText("Erreur Socket : " + se.Message + "\r\n");
+            }
+            catch (Exception ex)
+            {
+                textBoxRecp.AppendText("Erreur : " + ex.Message + "\r\n");
+            }
         }
 
         // Commit #3 - Bouton Recevoir
         private void buttonRecevoir_Click(object sender, EventArgs e)
         {
-           
-                // Commit #4 
-                
+            try
+            {
+                // Commit #4 - Vérifier si socket existe
+                if (SSockUDP == null)
+                {
+                    textBoxRecp.AppendText("Erreur : Socket non créé. Créez d'abord le socket.\r\n");
+                    return;
+                }
 
                 // Buffer de réception
                 var buffer = new byte[1024];
@@ -100,35 +135,59 @@ namespace socketUDP
                 // Affichage du message
                 string messageRecu = Encoding.ASCII.GetString(buffer, 0, bytesReceived);
                 textBoxRecp.AppendText($"Reçu de {IPedFrom} : {messageRecu}\r\n");
-          
-            
-               
-            
+            }
+            catch (System.Net.Sockets.SocketException se)
+            {
+                if (se.SocketErrorCode == SocketError.TimedOut)
+                {
+                    textBoxRecp.AppendText("Timeout : Aucune donnée reçue.\r\n");
+                }
+                else
+                {
+                    textBoxRecp.AppendText("Erreur Socket : " + se.Message + "\r\n");
+                }
+            }
+            catch (Exception ex)
+            {
+                textBoxRecp.AppendText("Erreur : " + ex.Message + "\r\n");
+            }
         }
 
         // Commit #3 - Bouton Fermer Socket
         private void buttonFermer_Click(object sender, EventArgs e)
         {
-
-            // Commit #4 
-            if (SSockUDP == null)
+            try
             {
-                textBoxRecp.AppendText("Erreur : Socket déjà fermé ou non créé.\r\n");
-                return;
-            }
+                // Commit #4 - Vérifier si socket existe
+                if (SSockUDP == null)
+                {
+                    textBoxRecp.AppendText("Erreur : Socket déjà fermé ou non créé.\r\n");
+                    return;
+                }
 
-            // Arrêter le timer
-            if (timerReceive != null)
+                // Arrêter le timer
+                if (timerReceive != null)
+                {
+                    timerReceive.Stop();
+                }
+
+                // Fermeture du socket
+                SSockUDP.Close();
+                SSockUDP = null;
+
+                textBoxRecp.AppendText("Socket fermé.\r\n");
+            }
+            catch (System.Net.Sockets.SocketException se)
             {
-                timerReceive.Stop();
+                textBoxRecp.AppendText("Erreur Socket : " + se.Message + "\r\n");
             }
-
-            // Fermeture du socket
-            SSockUDP.Close();
-            SSockUDP = null;
+            catch (Exception ex)
+            {
+                textBoxRecp.AppendText("Erreur : " + ex.Message + "\r\n");
+            }
         }
 
-        
+       
 
         // Bouton pour vider la zone de réception
         private void buttonClear_Click(object sender, EventArgs e)
